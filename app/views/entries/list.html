@@ -17,16 +17,16 @@
                 <div class="table-responsive">
                     <table ng-class="{in:vm.entries.length}"
                            class="table table-bordered table-hover">
-                        <tr data-ng-repeat="(key, value) in vm.entries">
+                        <tr data-ng-repeat="entry in vm.entries">
                             </td>
-                            <td>{{value.title}}<br>
+                            <td>{{entry.title}}<br>
                                 <small>
                                     <a id="edit-entry"
-                                       href="/#/entries/{{key}}/edit">Edit</a>
+                                       href="/#/entries/{{entry.$id}}/edit">Edit</a>
                                     / <a id=view-entry"
-                                         href="/#/entries/{{key}}">View</a></small>
+                                         href="/#/entries/{{entry.$id}}">View</a></small>
                             </td>
-                            <td>{{value.content}}</td>
+                            <td>{{entry.content}}</td>
                         </tr>
                     </table>
                 </div>

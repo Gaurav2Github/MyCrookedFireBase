@@ -11,13 +11,13 @@
  * Controller of the dineApp
  */
 angular.module('dineApp')
-    .controller('EntriesCtrl', function ($scope, $location, $routeParams, $firebase) {
+    .controller('EntriesCtrl', function ($scope, $location, $routeParams, $firebaseArray) {
 
         var vm = this;
 
         vm.entriesURL = 'https://glaring-fire-8569.firebaseio.com/entries'
         vm.entriesRef = new Firebase(vm.entriesURL);
-        vm.entries = $firebase(vm.entriesRef);
+        vm.entries = $firebaseArray(vm.entriesRef);
 
         //prototype your functions at the beginning of your controllers
         this.initEntries = initEntries;
@@ -29,30 +29,32 @@ angular.module('dineApp')
 
         //And then implement your functions
         function initEntries() {
-            console.log(vm.entries);
+            console.log(vm.entries)
         }
 
         function findEntry() {
             //three way data binding command commented out (shit is crazy)
-            //vm.entries.$child($routeParams.entryId).$bind($scope, 'vm.entry');
+//            vm.entries.$child($routeParams.entryId).$bind($scope, 'vm.entry');
             vm.entryId = $routeParams.entryId;
-            vm.entry = vm.entries.$child($routeParams.entryId);
-            console.log(vm.entry)
+            vm.entries.$loaded().then(function () {
+                vm.entry = vm.entries.$getRecord(vm.entryId);
+            })
+
         }
 
         function createEntry() {
-            vm.entriesRef.push(vm.entry);
+            vm.entries.$add(vm.entry);
             $location.path('entries');
         }
 
         function updateEntry() {
-            vm.entry.$save();
+            vm.entries.$save(vm.entry);
             $location.path('entries');
         }
 
 
         function removeEntry(entry) {
-            vm.entry.$remove();
+            vm.entries.$remove(entry);
             $location.path('entries');
         }
 
