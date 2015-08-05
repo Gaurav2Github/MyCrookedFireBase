@@ -22,30 +22,7 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">DINE WITH (?)</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/entries">Entries</a></li>
-              <li><a ng-href="#/about">About</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <ng-include src=" 'views/navigation/navigation.html' "></ng-include>
     </div>
 
     <div class="container">
@@ -96,9 +73,11 @@
         <script src="scripts/routes/entries.routes.js"></script>
         <script src="scripts/services/services.js"></script>
         <script src="scripts/directives/directives.js"></script>
+        <script src="scripts/filters/navigation.fltr.js"></script>
         <script src="scripts/controllers/main.ctrl.js"></script>
         <script src="scripts/controllers/about.ctrl.js"></script>
         <script src="scripts/controllers/entries.ctrl.js"></script>
+        <script src="scripts/controllers/navigation.ctrl.js"></script>
         <!-- endbuild -->
 </body>
 </html>

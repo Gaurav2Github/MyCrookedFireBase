@@ -1,2 +1,30 @@
 
-<!-- Migrate navigation bar html to here as a template !-->
+<div class="navbar navbar-default" role="navigation" data-ng-controller="NavigationCtrl as vm">
+    <div class="container">
+        <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#/"><strong>MyFireApp</strong></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+            <ul class="nav navbar-nav">
+                <!--add roles filter once users are set up-->
+                <li ng-class={active:tab.active} ng-repeat="tab in vm.tabs">
+                    <a href="{{tab.href}}" ng-click="vm.selectTab(tab.id)" id={{tab.id}}>
+                        <span class="glyphicon {{tab.icon_class}}" aria-hidden="true"></span>
+                        {{tab.title}}
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>

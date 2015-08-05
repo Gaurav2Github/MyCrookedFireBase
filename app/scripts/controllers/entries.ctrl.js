@@ -38,25 +38,33 @@ angular.module('dineApp')
             vm.entryId = $routeParams.entryId;
             vm.entries.$loaded().then(function () {
                 vm.entry = vm.entries.$getRecord(vm.entryId);
-            })
-
+            }).catch(function (err) {
+                console.log('find one operation failed: ', err);
+            });
         }
 
         function createEntry() {
-            vm.entries.$add(vm.entry);
-            $location.path('entries');
+            vm.entries.$add(vm.entry).then(function (ref) {
+                $location.path('entries/' + ref.key())
+            }).catch(function (err) {
+                console.log('create operation failed: ', err);
+            });
         }
 
         function updateEntry() {
-            vm.entries.$save(vm.entry);
-            $location.path('entries');
+            vm.entries.$save(vm.entry).then(function (ref) {
+                $location.path('entries/' + ref.key());
+            }).catch(function (err) {
+                console.log('update operation failed: ', err);
+            });
         }
-
 
         function removeEntry(entry) {
-            vm.entries.$remove(entry);
-            $location.path('entries');
+            vm.entries.$remove(entry).then(function (ref) {
+                $location.path('entries');
+            }).catch(function (err) {
+                console.log('remove operation failed: ', err);
+            });
         }
-
 
     });

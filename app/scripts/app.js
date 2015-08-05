@@ -17,5 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'firebase',
-    'dineApp.services'
+    'dineApp.services',
+    'dineApp.filters',
+    'dineApp.directives'
   ]);
