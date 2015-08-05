@@ -1,0 +1,39 @@
+<section id="entry-list"
+         ng-init="vm.initEntries()">
+
+    <div class="container container-fluid">
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <a ng-href="/#/entries/create" class="btn btn-primary">Add Entry</a>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="table-responsive">
+                    <table ng-class="{in:vm.entries.length}"
+                           class="table table-bordered table-hover">
+                        <tr data-ng-repeat="(key, value) in vm.entries">
+                            </td>
+                            <td>{{value.title}}<br>
+                                <small>
+                                    <a id="edit-entry"
+                                       href="/#/entries/{{key}}/edit">Edit</a>
+                                    / <a id=view-entry"
+                                         href="/#/entries/{{key}}">View</a></small>
+                            </td>
+                            <td>{{value.content}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</section>

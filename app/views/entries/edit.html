@@ -1,0 +1,23 @@
+<section id="edit-entry" ng-init="vm.findEntry()">
+
+    <form role="form" ng-submit="vm.updateEntry()">
+
+        <div class="form-group">
+            <label for="title">Entry Title</label>
+            <input data-ng-model="vm.entry.title" required id="title" type="text" placeholder="Entry Title" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="content">Entry Content</label>
+            <input data-ng-model="vm.entry.content" required id="content" type="text" placeholder="Entry Content" class="form-control">
+        </div>
+
+
+        <div class="form-group">
+            <button id="submit" type="submit" class="btn btn-primary">Save</button>
+            <button id="reset" type="reset" class="btn btn-default">Reset</button>
+        </div>
+
+    </form>
+
+</section>
