@@ -15,7 +15,7 @@
 
         <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
-            <ul class="nav navbar-nav pull-left">
+            <ul class="nav navbar-nav">
                 <!--add roles filter once users are set up-->
                 <li ng-class={active:tab.active} ng-repeat="tab in vm.tabs">
                     <a href="{{tab.href}}" ng-click="vm.selectTab(tab.id)" id={{tab.id}}>
@@ -27,16 +27,16 @@
 
             <ul ng-show="authData" class="nav navbar-nav pull-right">
                 <li>
-                    <button class="btn btn-default" ng-click="vm.auth.$unauth()">Log Out</button>
+                    <a href ng-click="vm.auth.$unauth()"><span class="glyphicon glyphicon-log-out"></span> LOGOUT</a>
                 </li>
             </ul>
 
             <ul ng-hide="authData" class="nav navbar-nav pull-right">
                 <li>
-                    <button class="btn btn-default" ng-click="goTo('/#/auth/login')">Login</button>
+                    <a href="/#/auth/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> LOGIN</a>
                 </li>
                 <li>
-                    <button class="btn btn-default" ng-click="goTo('/#/auth/register')">Register</button>
+                    <a href="/#/auth/register"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> REGISTER</a>
                 </li>
             </ul>
 

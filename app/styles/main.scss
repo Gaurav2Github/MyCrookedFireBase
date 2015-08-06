@@ -10,8 +10,23 @@
   padding: 0.2em 0;
 }
 
+
+html {
+
+
+}
+
 body {
-  padding: 160;
+  height: 100%;
+  max-width: 100%;
+  padding-bottom: 40px;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
 }
 
 .header,
@@ -33,28 +48,17 @@ body {
   padding-bottom: 19px;
 }
 
+
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
+  padding-top: 16px;
+  padding-bottom: 4px;
+  bottom: 0;
+  margin-bottom: 0;
+  position: fixed;
+  width: 100%;
 
 }
+
