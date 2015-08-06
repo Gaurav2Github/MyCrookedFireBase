@@ -3,7 +3,7 @@
  */
 "use strict";
 
-angular.module('dineApp.filters', []).filter('tabsFilter', function () {
+angular.module('crookedFireApp.filters', []).filter('tabsFilter', function () {
     return function (tabs, roles) {
 
         var arr = [];

@@ -4,7 +4,7 @@
 
 'use strict';
 
-angular.module('dineApp').config(function ($routeProvider) {
+angular.module('crookedFireApp').config(function ($routeProvider) {
     $routeProvider
         .when('/auth/login', {
             templateUrl: 'views/authentication/login.html',

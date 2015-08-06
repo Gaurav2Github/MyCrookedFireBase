@@ -7,7 +7,7 @@
 //your own firebase url
 var firebaseURL = "https://glaring-fire-8569.firebaseio.com/"
 
-angular.module('dineApp.services', []).factory("Auth", ["$firebaseAuth",
+angular.module('crookedFireApp.services', []).factory("Auth", ["$firebaseAuth",
     function($firebaseAuth) {
         var ref = new Firebase(firebaseURL);
         return $firebaseAuth(ref);

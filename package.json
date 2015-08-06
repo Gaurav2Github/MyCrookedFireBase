@@ -1,5 +1,5 @@
 {
-  "name": "dine",
+  "name": "crookedFireApp",
   "private": true,
   "devDependencies": {
     "grunt": "^0.4.5",

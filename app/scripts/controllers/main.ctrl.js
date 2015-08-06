@@ -2,16 +2,12 @@
 
 /**
  * @ngdoc function
- * @name dineApp.controller:MainCtrl
+ * @name crookedFireApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the dineApp
+ * Controller of the crookedFireApp
  */
-angular.module('dineApp')
+angular.module('crookedFireApp')
   .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
   });

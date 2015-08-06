@@ -4,15 +4,15 @@
 
 /**
  * @ngdoc function
- * @name dineApp.controller:NavigationCtrl
+ * @name crookedFireApp.controller:NavigationCtrl
  * @description
  * # NavigationCtrl
- * Controller of the dineApp
+ * Controller of the crookedFireApp
  */
 
 "use strict";
 
-angular.module('dineApp')
+angular.module('crookedFireApp')
     .controller('NavigationCtrl', function ($rootScope, $location, $routeParams, Auth) {
 
         var vm = this;

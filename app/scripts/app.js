@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name dineApp
+ * @name crookedFireApp
  * @description
- * # dineApp
+ * # crookedFireApp
  *
  * Main module of the application.
  */
 angular
-  .module('dineApp', [
+  .module('crookedFireApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'firebase',
     'angular-loading-bar',
-    'dineApp.services',
-    'dineApp.filters',
-    'dineApp.directives'
+    'crookedFireApp.services',
+    'crookedFireApp.filters',
+    'crookedFireApp.directives'
   ]);

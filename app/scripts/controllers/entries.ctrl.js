@@ -5,12 +5,12 @@
 
 /**
  * @ngdoc function
- * @name dineApp.controller:EntriesCtrl
+ * @name crookedFireApp.controller:EntriesCtrl
  * @description
  * # EntriesCtrl
- * Controller of the dineApp
+ * Controller of the crookedFireApp
  */
-angular.module('dineApp')
+angular.module('crookedFireApp')
     .controller('EntriesCtrl', function ($scope, $location, $routeParams, Entries) {
 
         var vm = this;

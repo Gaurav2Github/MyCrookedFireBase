@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name dineApp.controller:AuthenticationCtrl
+ * @name crookedFireApp.controller:AuthenticationCtrl
  * @description
  * # AuthenticationCtrl
- * Controller of the dineApp
+ * Controller of the crookedFireApp
  */
-angular.module('dineApp')
+angular.module('crookedFireApp')
     .controller('AuthenticationCtrl', function ($rootScope, $location, $routeParams, Auth) {
 
         var vm = this;
