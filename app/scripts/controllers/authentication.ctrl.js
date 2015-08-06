@@ -47,8 +47,6 @@ angular.module('dineApp')
         };
 
         function login() {
-
-            console.log('login called');
             $rootScope.authData = null;
             vm.error = null;
 

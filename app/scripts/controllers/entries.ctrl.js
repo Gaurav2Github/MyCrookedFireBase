@@ -11,13 +11,10 @@
  * Controller of the dineApp
  */
 angular.module('dineApp')
-    .controller('EntriesCtrl', function ($scope, $location, $routeParams, $firebaseArray) {
+    .controller('EntriesCtrl', function ($scope, $location, $routeParams, Entries) {
 
         var vm = this;
-
-        vm.entriesURL = 'https://glaring-fire-8569.firebaseio.com/entries'
-        vm.entriesRef = new Firebase(vm.entriesURL);
-        vm.entries = $firebaseArray(vm.entriesRef);
+        vm.entries = Entries;
 
         //prototype your functions at the beginning of your controllers
         this.initEntries = initEntries;
