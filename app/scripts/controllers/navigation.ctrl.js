@@ -31,8 +31,7 @@ angular.module('crookedFireApp')
 
             vm.tabs = [
                 {id: 'home-tab', href: '/#/', roles: [], active: false, title: "  HOME", icon_class: "glyphicon-home"},
-                {id: 'entries-tab', href: '/#/entries', roles: [], active: false, title: "  ENTRIES", icon_class: "glyphicon-book"},
-                {id: 'about-tab', href: '/#/about', roles: [], active: false, title: "  ABOUT", icon_class: "glyphicon-glass"}
+                {id: 'entries-tab', href: '/#/entries', roles: [], active: false, title: "  ENTRIES", icon_class: "glyphicon-book"}
             ];
         })();
 
