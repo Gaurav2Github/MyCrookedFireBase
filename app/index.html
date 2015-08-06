@@ -9,6 +9,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -21,9 +22,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <ng-include src=" 'views/navigation/navigation.html' "></ng-include>
-    </div>
+    <ng-include src=" 'views/navigation/navigation.html' "></ng-include>
 
     <div class="container">
     <div ng-view=""></div>
@@ -58,6 +57,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -71,13 +71,16 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/routes/public.routes.js"></script>
         <script src="scripts/routes/entries.routes.js"></script>
+        <script src="scripts/routes/authentication.routes.js"></script>
         <script src="scripts/services/services.js"></script>
         <script src="scripts/directives/directives.js"></script>
         <script src="scripts/filters/navigation.fltr.js"></script>
+        <script src="scripts/controllers/authentication.ctrl.js"></script>
         <script src="scripts/controllers/main.ctrl.js"></script>
         <script src="scripts/controllers/about.ctrl.js"></script>
         <script src="scripts/controllers/entries.ctrl.js"></script>
         <script src="scripts/controllers/navigation.ctrl.js"></script>
+
         <!-- endbuild -->
 </body>
 </html>

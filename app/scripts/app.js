@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'firebase',
+    'angular-loading-bar',
     'dineApp.services',
     'dineApp.filters',
     'dineApp.directives'

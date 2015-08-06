@@ -1,6 +1,8 @@
 /**
  * Created by reuben on 10/11/14.
  */
+"use strict";
+
 angular.module('dineApp.filters', []).filter('tabsFilter', function () {
     return function (tabs, roles) {
 

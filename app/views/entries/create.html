@@ -1,24 +1,24 @@
 <section id="create-entry" ng-init="vm.initEntries()">
 
 
-<form role="form" ng-submit="vm.createEntry()">
+    <form role="form" ng-submit="vm.createEntry()">
 
-    <div class="form-group">
-        <label for="title">Entry Title</label>
-        <input data-ng-model="vm.entry.title" required id="title" type="text" placeholder="Entry Title" class="form-control">
-    </div>
+        <div class="form-group">
+            <label for="title">Entry Title</label>
+            <input data-ng-model="vm.entry.title" required id="title" type="text" placeholder="Entry Title" class="form-control">
+        </div>
 
-    <div class="form-group">
-        <label for="content">Entry Content</label>
-        <input data-ng-model="vm.entry.content" required id="content" type="text" placeholder="Entry Content" class="form-control">
-    </div>
+        <div class="form-group">
+            <label for="content">Entry Content</label>
+            <input data-ng-model="vm.entry.content" required id="content" type="text" placeholder="Entry Content" class="form-control">
+        </div>
 
 
-    <div class="form-group">
-        <button id="submit" type="submit" class="btn btn-primary">Create</button>
-        <button id="reset" type="reset" class="btn btn-default">Reset</button>
-    </div>
+        <div class="form-group">
+            <button id="submit" type="submit" class="btn btn-primary">Create</button>
+            <button id="reset" type="reset" class="btn btn-default">Reset</button>
+        </div>
 
-</form>
+    </form>
 
 </section>
