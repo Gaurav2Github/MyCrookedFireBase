@@ -11,23 +11,23 @@
  * Controller of the crookedFireApp
  */
 angular.module('crookedFireApp')
-    .controller('EntriesCtrl', function ($scope, $location, $routeParams, Entries) {
+    .controller('EntriesCtrl', function ($scope, $location, $routeParams, FireFactory) {
 
         var vm = this;
-        vm.entries = Entries;
+        //declare and init firebase factories
+        vm.entriesFactory = FireFactory.getInstance().init('entries');
 
         //prototype your functions at the beginning of your controllers
-        this.initEntries = initEntries;
-
         this.findEntry = findEntry;
         this.createEntry = createEntry;
         this.updateEntry = updateEntry;
         this.removeEntry = removeEntry;
 
-        //And then implement your functions
-        function initEntries() {
-            console.log(vm.entries)
-        }
+        //initialise our resources
+        (function () {
+            //get list of examples
+            vm.entries = vm.entriesFactory.getAll();
+        })();
 
         function findEntry() {
 

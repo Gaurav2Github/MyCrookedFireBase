@@ -11,26 +11,26 @@
  * Controller of the crookedFireApp
  */
 angular.module('crookedFireApp')
-    .controller('ExamplesCtrl', function ($scope, $location, $routeParams, Examples) {
+    .controller('ExamplesCtrl', function ($scope, $location, $routeParams, FireFactory) {
 
         var vm = this;
-        vm.examples = Examples.getAll();
-
+        //init new instance of FireFactory for 'examples'
+        vm.exampleFactory = FireFactory.getInstance().init('examples');
         //prototype your functions at the beginning of your controllers
-        this.initExamples = initExamples;
         this.findExample = findExample;
         this.createExample = createExample;
         this.removeExample = removeExample;
 
-        //And then implement your functions
-        function initExamples() {
-            console.log(vm.examples)
-        }
+        //initialise our resources
+        (function () {
+            //get list of examples
+            vm.examples = vm.exampleFactory.getAll();
+        })();
 
         function findExample() {
             vm.exampleId = $routeParams.exampleId;
             //retrieve $firebaseObject by key so we can use three way databinding
-            vm.example = Examples.getExample(vm.exampleId);
+            vm.example = vm.exampleFactory.getOne(vm.exampleId);
             //bind example to scope to enable three way databinding
             vm.example.$bindTo($scope, 'vm.example');
         }
