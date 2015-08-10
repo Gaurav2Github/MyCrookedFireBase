@@ -30,8 +30,7 @@ angular.module('crookedFireApp')
         }
 
         function findEntry() {
-            //three way data binding command commented out (shit is crazy)
-//            vm.entries.$child($routeParams.entryId).$bind($scope, 'vm.entry');
+
             vm.entryId = $routeParams.entryId;
             vm.entries.$loaded().then(function () {
                 vm.entry = vm.entries.$getRecord(vm.entryId);

@@ -28,14 +28,17 @@ angular.module('crookedFireApp')
         }
 
         function findExample() {
-            console.log(vm.examples)
             vm.exampleId = $routeParams.exampleId;
+            //retrieve $firebaseObject by key so we can use three way databinding
             vm.example = Examples.getExample(vm.exampleId);
+            //bind example to scope to enable three way databinding
             vm.example.$bindTo($scope, 'vm.example');
         }
 
         function createExample() {
+            //simply adds a child to 'examples' branch of json tree.
             vm.examples.$add(vm.example).then(function (ref) {
+                //redirects to new 'example' after creation
                 $location.path('examples/' + ref.key())
             }).catch(function (err) {
                 console.log('create operation failed: ', err);
@@ -43,9 +46,10 @@ angular.module('crookedFireApp')
         }
 
         function removeExample(example) {
-            console.log(example);
+            //must retrieve record from $firebaseArray to execute $remove
             example = vm.examples.$getRecord(example.$id);
             vm.examples.$remove(example).then(function (ref) {
+                //redirects to list view after remove
                 $location.path('examples');
             }).catch(function (err) {
                 console.log('remove operation failed: ', err);
