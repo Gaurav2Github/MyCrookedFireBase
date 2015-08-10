@@ -28,6 +28,7 @@ angular.module('crookedFireApp')
         }
 
         function findExample() {
+            console.log(vm.examples)
             vm.exampleId = $routeParams.exampleId;
             vm.example = Examples.getExample(vm.exampleId);
             vm.example.$bindTo($scope, 'vm.example');
@@ -42,6 +43,8 @@ angular.module('crookedFireApp')
         }
 
         function removeExample(example) {
+            console.log(example);
+            example = vm.examples.$getRecord(example.$id);
             vm.examples.$remove(example).then(function (ref) {
                 $location.path('examples');
             }).catch(function (err) {

@@ -29,7 +29,8 @@ angular.module('crookedFireApp').controller('NavigationCtrl', function ($rootSco
         (function () {
             vm.tabs = [
                 {id: 'home-tab', href: '/#/', roles: [], active: false, title: "  HOME", icon_class: "glyphicon-home"},
-                {id: 'entries-tab', href: '/#/entries', roles: [], active: false, title: "  ENTRIES", icon_class: "glyphicon-book"}
+                {id: 'entries-tab', href: '/#/entries', roles: [], active: false, title: "  ENTRIES", icon_class: "glyphicon-book"},
+                {id: 'examples-tab', href: '/#/examples', roles: [], active: false, title: "  EXAMPLES", icon_class: "glyphicon-fire"}
             ];
         })();
 
