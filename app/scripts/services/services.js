@@ -11,12 +11,6 @@ angular.module('crookedFireApp.services', []).factory("Auth", ["$firebaseAuth",
         var ref = new Firebase(firebaseURL);
         return $firebaseAuth(ref);
     }
-]).factory("Entries", ["$firebaseArray",
-    function($firebaseArray) {
-        var url = firebaseURL + 'entries';
-        var ref = new Firebase(url);
-        return $firebaseArray(ref);
-    }
 ]).factory("FireFactory", ["$firebaseArray","$firebaseObject",
     function($firebaseArray, $firebaseObject) {
 
