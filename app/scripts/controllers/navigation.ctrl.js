@@ -12,8 +12,7 @@
 
 "use strict";
 
-angular.module('crookedFireApp')
-    .controller('NavigationCtrl', function ($rootScope, $location, $routeParams, Auth) {
+angular.module('crookedFireApp').controller('NavigationCtrl', function ($rootScope, $location, $routeParams, Auth) {
 
         var vm = this;
         vm.selectTab = selectTab;
@@ -28,7 +27,6 @@ angular.module('crookedFireApp')
 
         //anonymous function,called on initialisation
         (function () {
-
             vm.tabs = [
                 {id: 'home-tab', href: '/#/', roles: [], active: false, title: "  HOME", icon_class: "glyphicon-home"},
                 {id: 'entries-tab', href: '/#/entries', roles: [], active: false, title: "  ENTRIES", icon_class: "glyphicon-book"}

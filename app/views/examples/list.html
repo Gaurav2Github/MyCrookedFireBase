@@ -1,0 +1,39 @@
+<section id="example-list"
+         ng-init="vm.initExamples()">
+
+    <div class="container container-fluid">
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <a ng-href="/#/examples/create" class="btn btn-primary">Add Entry</a>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="table-responsive">
+                    <table ng-class="{in:vm.examples.length}"
+                           class="table table-bordered table-hover">
+                        <tr data-ng-repeat="example in vm.examples">
+                            </td>
+                            <td>{{example.title}}<br>
+                                <small>
+                                    <a id="edit-example"
+                                       href="/#/examples/{{example.$id}}/edit">Edit</a>
+                                    / <a id=view-example"
+                                         href="/#/examples/{{example.$id}}">View</a></small>
+                            </td>
+                            <td>{{example.content}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</section>

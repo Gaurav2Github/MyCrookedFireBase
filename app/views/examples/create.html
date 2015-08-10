@@ -1,0 +1,24 @@
+<section id="create-Example" ng-init="vm.initExamples()">
+
+
+    <form role="form" ng-submit="vm.createExample()">
+
+        <div class="form-group">
+            <label for="title">Example Title</label>
+            <input data-ng-model="vm.example.title" required id="title" type="text" placeholder="Example Title" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="content">Example Content</label>
+            <input data-ng-model="vm.example.content" required id="content" type="text" placeholder="Example Content" class="form-control">
+        </div>
+
+
+        <div class="form-group">
+            <button id="submit" type="submit" class="btn btn-primary">Create</button>
+            <button id="reset" type="reset" class="btn btn-default">Reset</button>
+        </div>
+
+    </form>
+
+</section>

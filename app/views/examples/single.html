@@ -1,0 +1,34 @@
+<section id="single-example" ng-init="vm.findExample()">
+
+    <div class="table-responsive">
+
+        <table class="table table-hover table-bordered">
+
+            <tbody>
+            <tr>
+                <th>Title</th>
+                <td>
+                    {{vm.example.title}}
+                </td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>
+                    {{vm.example.content}}
+                </td>
+            </tr>
+            <tr>
+                <td><a id="edit-example" class="btn" href="/#/examples/{{vm.exampleId}}/edit">EDIT <i
+                        class="glyphicon glyphicon-edit"></i></a></td>
+                <td><a id="remove-example" class="btn" ng-click="vm.removeExample(vm.example)">REMOVE <i
+                        class="glyphicon glyphicon-remove"></i></a></td>
+            </tr>
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
