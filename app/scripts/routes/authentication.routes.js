@@ -10,12 +10,18 @@ angular.module('crookedFireApp').config(function ($routeProvider) {
             templateUrl: 'views/authentication/login.html',
             controller: 'AuthenticationCtrl',
             controllerAs: 'vm',
-            roles: ['']
+            roles: [''],
+            resolve: {
+
+            }
         })
         .when('/auth/register', {
             templateUrl: 'views/authentication/register.html',
             controller: 'AuthenticationCtrl',
             controllerAs: 'vm',
-            roles: ['']
+            roles: [''],
+            resolve: {
+
+            }
         });
 });

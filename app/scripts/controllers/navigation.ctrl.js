@@ -67,11 +67,9 @@ angular.module('crookedFireApp').controller('NavigationCtrl', function ($rootSco
 
         function authorizeUser(access) {
             var permissionGranted = false;
-            //check for permission
             if (access) {
                 for (var i = 0; i < access.length; i++) {
                     if (access[i] == '' || $rootScope.roles[access[i]]) {
-                        //flag user as having access
                         permissionGranted = true;
                         break;
                     }

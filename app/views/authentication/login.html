@@ -4,7 +4,14 @@
 
         <div class="row">
 
+
+
+
             <div class="col-xs-6">
+
+                <p ng-show="vm.error" class="alert alert-warning">
+                    <strong>{{vm.error.code}}</strong>
+                </p>
 
                 <form role="form"
                       ng-submit="vm.login()">

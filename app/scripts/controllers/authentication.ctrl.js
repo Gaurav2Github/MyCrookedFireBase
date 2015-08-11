@@ -37,7 +37,7 @@ angular.module('crookedFireApp')
             }).then(function(userData) {
                 vm.message = "User created with uid: " + userData.uid;
                 vm.createRoles(userData);
-                $location.path('/auth/login')
+                vm.login();
             }).catch(function(error) {
                 vm.error = error;
             });
