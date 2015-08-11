@@ -17,7 +17,7 @@
 
             <ul class="nav navbar-nav">
                 <!--add roles filter once users are set up-->
-                <li ng-class={active:tab.active} ng-repeat="tab in vm.tabs">
+                <li ng-class={active:tab.active} ng-repeat="tab in vm.tabs | tabsFilter: roles">
                     <a href="{{tab.href}}" ng-click="vm.selectTab(tab.id)" id={{tab.id}}>
                         <span class="glyphicon {{tab.icon_class}}" aria-hidden="true"></span>
                         {{tab.title}}

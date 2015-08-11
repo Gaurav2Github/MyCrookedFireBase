@@ -12,31 +12,51 @@ angular.module('crookedFireApp')
 
         var vm = this;
 
+        //get fireAuth object and user roles object
+        vm.auth = Auth.init();
+        vm.roles = Auth.roles();
+
         vm.createUser = createUser;
+        vm.createRoles = createRoles;
         vm.removeUser = removeUser;
         vm.login = login;
 
+        (function () {
+
+        })();
+
 
         function createUser() {
+
             vm.message = null;
             vm.error = null;
 
-            Auth.$createUser({
+            vm.auth.$createUser({
                 email: vm.email,
                 password: vm.password
             }).then(function(userData) {
                 vm.message = "User created with uid: " + userData.uid;
-                $location.path('/')
+                vm.createRoles(userData);
+                $location.path('/auth/login')
             }).catch(function(error) {
                 vm.error = error;
             });
         };
 
+        function createRoles(userData) {
+            vm.roles[userData.uid] = {'user': true, 'admin': false};
+            vm.roles.$save().catch(function (error) {
+                vm.error = error;
+            });
+        }
+
+        //TODO: refactor into user management module
         function removeUser() {
+
             vm.message = null;
             vm.error = null;
 
-            Auth.$removeUser({
+            vm.auth.$removeUser({
                 email: vm.email,
                 password: vm.password
             }).then(function() {
@@ -44,19 +64,21 @@ angular.module('crookedFireApp')
             }).catch(function(error) {
                 vm.error = error;
             });
+
         };
 
         function login() {
-            $rootScope.authData = null;
+
             vm.error = null;
 
-            Auth.$authWithPassword({
+            vm.auth.$authWithPassword({
                 email    : vm.email,
                 password : vm.password
             }).then(function (authData) {
+                $rootScope.roles = Auth.rolesById(authData.uid);
                 $location.path('/')
             }).catch(function(error) {
-                console.log(error);
+                vm.error = error;
             });
 
         };

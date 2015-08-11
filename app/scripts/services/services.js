@@ -6,10 +6,29 @@
 //your own firebase url
 var firebaseURL = "https://glaring-fire-8569.firebaseio.com/"
 
-angular.module('crookedFireApp.services', []).factory("Auth", ["$firebaseAuth",
-    function($firebaseAuth) {
-        var ref = new Firebase(firebaseURL);
-        return $firebaseAuth(ref);
+angular.module('crookedFireApp.services', []).factory("Auth", ["$firebaseAuth","$firebaseObject",
+    function($firebaseAuth, $firebaseObject) {
+
+        return {
+
+            init: function() {
+                var ref = new Firebase(firebaseURL);
+                return $firebaseAuth(ref);
+            },
+
+            roles: function () {
+                var ref = new Firebase(firebaseURL + 'roles');
+                return $firebaseObject(ref);
+            },
+
+            rolesById: function(uid) {
+                var ref = new Firebase(firebaseURL + 'roles/' + uid);
+                return $firebaseObject(ref);
+            }
+
+        }
+
+
     }
 ]).factory("FireFactory", ["$firebaseArray","$firebaseObject",
     function($firebaseArray, $firebaseObject) {

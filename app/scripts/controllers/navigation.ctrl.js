@@ -15,24 +15,73 @@
 angular.module('crookedFireApp').controller('NavigationCtrl', function ($rootScope, $location, $routeParams, Auth) {
 
         var vm = this;
+
+        //initalise $firebaseAuth
+        vm.auth = Auth.init();
+
         vm.selectTab = selectTab;
-        vm.auth = Auth;
+        vm.authorizeUser = authorizeUser;
 
         $rootScope.goTo = goTo;
 
+        //Anonymous function,called on initialisation
+        //configure your navigation bar here
+        (function () {
+
+            vm.tabs = [
+                {id: 'home-tab', href: '/#/', roles: [''], active: false, title: "  HOME", icon_class: "glyphicon-home"},
+                {id: 'entries-tab', href: '/#/entries', roles: ['user'], active: false, title: "  ENTRIES", icon_class: "glyphicon-book"},
+                {id: 'examples-tab', href: '/#/examples', roles: ['admin'], active: false, title: "  EXAMPLES", icon_class: "glyphicon-fire"}
+            ];
+
+        })();
+
+        //on login, logout, and register this function is called, returning user data(if any)
         // any time auth status updates, add the user data to scope
         vm.auth.$onAuth(function(authData) {
-            $rootScope.authData = authData;
+            if(authData) {
+                $rootScope.authData = authData;
+                $rootScope.roles = Auth.rolesById(authData.uid);
+            } else {
+                //on logout or failure to retrieve authData, clear globals and return to home.
+                $rootScope.roles = null;
+                $rootScope.authData = null;
+                $location.path('/')
+            }
         });
 
-        //anonymous function,called on initialisation
-        (function () {
-            vm.tabs = [
-                {id: 'home-tab', href: '/#/', roles: [], active: false, title: "  HOME", icon_class: "glyphicon-home"},
-                {id: 'entries-tab', href: '/#/entries', roles: [], active: false, title: "  ENTRIES", icon_class: "glyphicon-book"},
-                {id: 'examples-tab', href: '/#/examples', roles: [], active: false, title: "  EXAMPLES", icon_class: "glyphicon-fire"}
-            ];
-        })();
+        //redirect to home if authentication fails
+        $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
+            // We can catch the error thrown when the $requireAuth promise is rejected
+            // and redirect the user back to the home page
+            if (error === "AUTH_REQUIRED") {
+                $location.path("/");
+            }
+        });
+
+        //redirect to home if user lacks required roles
+        $rootScope.$on('$routeChangeStart', function(next, current) {
+            vm.authorizeUser(current.roles);
+        });
+
+
+        function authorizeUser(access) {
+            var permissionGranted = false;
+            //check for permission
+            if (access) {
+                for (var i = 0; i < access.length; i++) {
+                    if (access[i] == '' || $rootScope.roles[access[i]]) {
+                        //flag user as having access
+                        permissionGranted = true;
+                        break;
+                    }
+                }
+            }
+            //TODO: create a view for 'unauthorized/forbidden'
+            if (!permissionGranted) {
+                $location.path('/');
+            }
+        }
 
         function goTo(path) {
             window.location.href = path;

@@ -25,6 +25,7 @@ angular.module('crookedFireApp')
         (function () {
             //get list of examples
             vm.examples = vm.exampleFactory.getAll();
+
         })();
 
         function findExample() {

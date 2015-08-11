@@ -9,7 +9,8 @@ angular.module('crookedFireApp').config(function ($routeProvider) {
         .when('/', {
             templateUrl: 'views/main.html',
             controller: 'MainCtrl',
-            controllerAs: 'main'
+            controllerAs: 'main',
+            roles: ['']
         })
         .otherwise({
             redirectTo: '/'
