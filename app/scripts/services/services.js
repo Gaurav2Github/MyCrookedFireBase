@@ -4,7 +4,8 @@
 "use strict";
 
 //your own firebase url
-var firebaseURL = "https://glaring-fire-8569.firebaseio.com/"
+//var firebaseURL = "https://glaring-fire-8569.firebaseio.com/";
+ var firebaseURL = "https://scorching-heat-6352.firebaseio.com/";
 
 angular.module('crookedFireApp.services', []).factory("Auth", ["$firebaseAuth","$firebaseObject",
     function($firebaseAuth, $firebaseObject) {
@@ -26,7 +27,7 @@ angular.module('crookedFireApp.services', []).factory("Auth", ["$firebaseAuth","
                 return $firebaseObject(ref);
             }
 
-        }
+        };
 
 
     }
@@ -37,23 +38,23 @@ angular.module('crookedFireApp.services', []).factory("Auth", ["$firebaseAuth","
             this.name = '';
             this.data = [];
             this.single = {};
-        }
+        };
 
         var model = {
             getInstance:function(){ return new serviceProvider(); }
-        }
+        };
 
         serviceProvider.prototype.init = function(name){
             this.name = name;
             return this;
-        }
+        };
 
         serviceProvider.prototype.getAll = function () {
             var url = firebaseURL + this.name;
             var ref = new Firebase(url);
             this.data = $firebaseArray(ref);
             return this.data;
-        }
+        };
 
         serviceProvider.prototype.getOne = function (key) {
             var url = firebaseURL + this.name;
@@ -63,7 +64,7 @@ angular.module('crookedFireApp.services', []).factory("Auth", ["$firebaseAuth","
             // return it as a synchronized object
             this.single = $firebaseObject(objectRef);
             return this.single;
-        }
+        };
 
         return model;
 
