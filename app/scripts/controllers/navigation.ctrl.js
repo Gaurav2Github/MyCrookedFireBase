@@ -30,6 +30,7 @@ angular.module('crookedFireApp').controller('NavigationCtrl', function ($rootSco
 
             vm.tabs = [
                 {id: 'home-tab', href: '/#/', roles: [''], active: false, title: "  HOME", icon_class: "glyphicon-home"},
+                {id: 'calc-tab', href: '/#/calc', roles: [''], active: false, title: "  CALCULATOR", icon_class: "glyphicon-edit"},
                 {id: 'entries-tab', href: '/#/entries', roles: ['user'], active: false, title: "  ENTRIES", icon_class: "glyphicon-book"},
                 {id: 'examples-tab', href: '/#/examples', roles: ['admin'], active: false, title: "  EXAMPLES", icon_class: "glyphicon-fire"}
             ];

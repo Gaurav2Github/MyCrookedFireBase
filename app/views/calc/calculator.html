@@ -1,0 +1,35 @@
+<section id="calculator">
+  <div class="container container-fluid">
+    <div>
+      <h3>Super Calculator</h3>
+      <form class="form-inline">
+        <input ng-model="vm.first" type="text" class="input-small"/>
+        <select ng-model="vm.operator" class="span1"
+                ng-options="_value_ for (_key_, _value_) in vm.operators">
+        </select>
+        <input ng-model="vm.second" type="text" class="input-small"/>
+        <button ng-click="vm.doAddition()" id="gobutton" class="btn">Go!</button>
+        <h2>{{vm.latest}}</h2>
+      </form>
+    </div>
+    <h4>History</h4>
+    <table class="table">
+      <thead><tr>
+        <th>Time</th>
+        <th>Expression</th>
+        <th>Result</th>
+      </tr></thead>
+      <tr ng-repeat="result in vm.memory">
+        <td>
+          {{result.timestamp | date:'mediumTime'}}
+        </td>
+        <td>
+          <span>{{result.first}}</span>
+          <span>{{result.operator}}</span>
+          <span>{{result.second}}</span>
+        </td>
+        <td>{{result.value}}</td>
+      </tr>
+    </table>
+  </div>
+</section>
