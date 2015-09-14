@@ -1,0 +1,145 @@
+<section id = "projector">
+  <div class="container container-fluid">
+    <div class="row">
+      <div class="span12">
+        <h1>Balance Projector</h1>
+        <p>A <strong>real time</strong> personal finance projector.</p>
+      </div>
+    </div>
+  </div>
+  <div class="container container-fluid">
+    <div class="row">
+      <div class="col-md-7">
+
+
+        <div class="box">
+          <h2>How much money do you have today?</h2>
+          <input type="text" ng-model="vm.startBalance" placeholder="Enter your current balance" />
+        </div>
+
+
+        <div class="box">
+          <h2>What is your regular income?</h2>
+          <ul>
+            <li ng-repeat="income in vm.incomes" class="active-{{income.active}}">
+              <span><input type="checkbox" ng-model="income.active"></span>
+              <input type="text" ng-model="income.name" placeholder="What is it? e.g. Salary..." class="span3" />
+              <input type="text" ng-model="income.amount" placeholder="Enter Amount" class="span1"/>
+              <select class="span2" ng-model="income.frequency" ng-options="frequency.value as frequency.name for frequency in vm.frequencyArr">
+
+                <!-- <option value="30.4166666666667">daily</option>
+                <option value="21.6666666666667">work days</option>
+                <option value="4.33333333333333">weekly</option>
+                <option value="2.16666666666667">every 2 weeks</option>
+                <option value="1">monthly</option> -->
+              </select>
+              <a class="" ng-click="vm.removeIncome($index);"><i class="icon-minus-sign"></i>Remove</a>
+            </li>
+          </ul>
+          <button class="btn btn-indented" ng-click="vm.addIncome();"><i class="icon-plus"></i> Add</button>
+        </div>
+
+
+
+        <div class="box">
+          <h2>What are your regular expenses?</h2>
+          <ul>
+            <li ng-repeat="expense in vm.expenses" class="active-{{expense.active}}">
+              <span><input type="checkbox" ng-model="expense.active"></span>
+              <input type="text" ng-model="expense.name" placeholder="e.g. Rent..." class="span3" />
+              <input type="text" ng-model="expense.amount" placeholder="Enter Amount" class="span1" />
+              <select class="span2" ng-model="expense.frequency" ng-options="frequency.value as frequency.name for frequency in vm.frequencyArr">
+                <!-- <option value=30.4166666666667>Daily</option>
+                <option value=21.6666666666667>Business Daily</option>
+                <option value=4.33333333333333>Weekly</option>
+                <option value=2.16666666666667>Every 2 Weeks</option>
+                <option value=1>Monthly</option> -->
+              </select>
+              <a class="" ng-click="vm.removeExpense($index);"><i class="icon-minus-sign"></i>Remove</a>
+            </li>
+          </ul>
+          <button class="btn btn-indented" ng-click="vm.addExpense();"><i class="icon-plus"></i> Add</button>
+        </div>
+
+
+        <div class="box">
+          <h2>Any non-Recurring transactions?</h2>
+          <ul>
+            <li ng-repeat="transaction in vm.nonRecurring" class="active-{{transaction.active}}">
+              <span><input type="checkbox" ng-model="transaction.active"></span>
+              <input type="text" ng-model="transaction.name" placeholder="e.g. Bonus..." class="span3" />
+              <input type="text" ng-model="transaction.amount" placeholder="Enter Amount" class="span1" />
+              <select class="span2" ng-model='transaction.month' ng-options="vm.getMonthLabel(value) for value in [1,2,3,4,5,6,7,8,9,10,11,12]">
+              </select>
+              <a class="" ng-click="vm.removeTransaction($index);"><i class="icon-minus-sign"></i>Remove</a>
+            </li>
+          </ul>
+          <button class="btn btn-indented" ng-click="vm.addTransaction();"><i class="icon-plus"></i> Add</button>
+        </div>
+
+        <div class="store" ng-show="false">
+          <p>
+            <button class="btn btn-success" ng-click="vm.saveProjector();"><i class="icon-hdd icon-white"></i> Save</button>
+            <button class="btn btn-danger" ng-click="vm.clearProjector;"><i class="icon-trash icon-white"></i> Erase</button>
+          </p>
+          <p>Note:</p>
+        </div>
+
+      </div>
+
+      <div class="col-md-5">
+
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th colspan="2" class="number">Accumulated net income</th>
+            <th class="number">Balance</th>
+          </thead>
+          <tbody>
+          <tr ng-repeat="change in vm.monthlyProjection() track by $index;">
+            <td>{{vm.getMonthLabel($index+1)}}</td>
+            <td class="number">{{vm.roundDown(change)}}</td>
+            <td class="number" ng-class="vm.positiveNegative(vm.convertToNumber(vm.startBalance) + change)">
+              {{vm.roundDown(vm.convertToNumber(vm.startBalance) + change)}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th></th>
+            <th class="number">Per month</th>
+            <th class="number">Per year</th>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Income</td>
+            <td class="number">{{vm.roundDown(vm.monthlyIncome())}}</td>
+            <td class="number">{{vm.roundDown(vm.monthlyIncome()*12)}}</td>
+          </tr>
+          <tr>
+            <td>Expenses</td>
+            <td class="number">{{vm.roundDown(vm.monthlyExpense())}}</td>
+            <td class="number">{{vm.roundDown(vm.monthlyExpense()*12)}}</td>
+          </tr>
+          <tr>
+            <td>Non-Recurring</td>
+            <td class="number"></td>
+            <td class="number">{{vm.tallyTransactions()}}</td>
+          </tr>
+          <tr>
+            <td><strong>Net income</strong></td>
+            <td class="number" ng-class="vm.positiveNegative(vm.monthlyNet())"><strong>{{vm.roundDown(vm.monthlyNet())}}</strong></td>
+            <td class="number" ng-class="vm.positiveNegative((vm.monthlyNet()*12)+vm.tallyTransactions())"><strong>{{vm.roundDown(vm.monthlyNet()*12)+vm.tallyTransactions()}}</strong></td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
