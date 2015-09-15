@@ -4,7 +4,6 @@
 "use strict";
 
 //your own firebase url
-//var firebaseURL = "https://glaring-fire-8569.firebaseio.com/";
  var firebaseURL = "https://scorching-heat-6352.firebaseio.com/";
 
 angular.module('crookedFireApp.services', []).factory("Auth", ["$firebaseAuth","$firebaseObject",

@@ -2,25 +2,24 @@
   <div class="container container-fluid">
     <div class="row">
       <div class="span12">
-        <h1>Balance Projector</h1>
-        <p>A <strong>real time</strong> personal finance projector.</p>
+        <p class="text-center">A <strong>real time</strong> personal finance balance projector.</p>
       </div>
     </div>
   </div>
   <div class="container container-fluid">
     <div class="row">
-      <div class="col-md-7">
+      <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
 
 
         <div class="box">
-          <h2>How much money do you have today?</h2>
+          <h4>How much money do you have today?</h4>
           <input type="text" ng-model="vm.startBalance" placeholder="Enter your current balance" />
         </div>
 
 
         <div class="box">
-          <h2>What is your regular income?</h2>
-          <ul>
+          <h4>What is your regular income?</h4>
+          <ul class="list-unstyled">
             <li ng-repeat="income in vm.incomes" class="active-{{income.active}}">
               <span><input type="checkbox" ng-model="income.active"></span>
               <input type="text" ng-model="income.name" placeholder="What is it? e.g. Salary..." class="span3" />
@@ -33,17 +32,17 @@
                 <option value="2.16666666666667">every 2 weeks</option>
                 <option value="1">monthly</option> -->
               </select>
-              <a class="" ng-click="vm.removeIncome($index);"><i class="icon-minus-sign"></i>Remove</a>
+              <button class="btn btn-indented" ng-click="vm.removeIncome($index);"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
             </li>
           </ul>
-          <button class="btn btn-indented" ng-click="vm.addIncome();"><i class="icon-plus"></i> Add</button>
+          <button class="btn btn-indented" ng-click="vm.addIncome();"><span  class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add</button>
         </div>
 
 
 
         <div class="box">
-          <h2>What are your regular expenses?</h2>
-          <ul>
+          <h4>What are your regular expenses?</h4>
+          <ul class="list-unstyled">
             <li ng-repeat="expense in vm.expenses" class="active-{{expense.active}}">
               <span><input type="checkbox" ng-model="expense.active"></span>
               <input type="text" ng-model="expense.name" placeholder="e.g. Rent..." class="span3" />
@@ -55,26 +54,26 @@
                 <option value=2.16666666666667>Every 2 Weeks</option>
                 <option value=1>Monthly</option> -->
               </select>
-              <a class="" ng-click="vm.removeExpense($index);"><i class="icon-minus-sign"></i>Remove</a>
+              <button class="btn btn-indented" ng-click="vm.removeExpense($index);"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
             </li>
           </ul>
-          <button class="btn btn-indented" ng-click="vm.addExpense();"><i class="icon-plus"></i> Add</button>
+          <button class="btn btn-indented" ng-click="vm.addExpense();"><span  class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add</button>
         </div>
 
 
         <div class="box">
-          <h2>Any non-Recurring transactions?</h2>
-          <ul>
+          <h4>Any non-Recurring transactions?</h4>
+          <ul class="list-unstyled">
             <li ng-repeat="transaction in vm.nonRecurring" class="active-{{transaction.active}}">
               <span><input type="checkbox" ng-model="transaction.active"></span>
               <input type="text" ng-model="transaction.name" placeholder="e.g. Bonus..." class="span3" />
               <input type="text" ng-model="transaction.amount" placeholder="Enter Amount" class="span1" />
               <select class="span2" ng-model='transaction.month' ng-options="vm.getMonthLabel(value) for value in [1,2,3,4,5,6,7,8,9,10,11,12]">
               </select>
-              <a class="" ng-click="vm.removeTransaction($index);"><i class="icon-minus-sign"></i>Remove</a>
+              <button class="btn btn-indented" ng-click="vm.removeTransaction($index);"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
             </li>
           </ul>
-          <button class="btn btn-indented" ng-click="vm.addTransaction();"><i class="icon-plus"></i> Add</button>
+          <button class="btn btn-indented" ng-click="vm.addTransaction();"><span  class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add</button>
         </div>
 
         <div class="store" ng-show="false">

@@ -67,7 +67,7 @@ angular.module('crookedFireApp')
     }
 
     function addExpense() {
-      var newEmptyExpense = {active:true, name:'', amount:0, frequency:1};
+      var newEmptyExpense = {active:true, name:'', amount:'', frequency:1};
       vm.expenses.push(newEmptyExpense);
     }
 
@@ -76,7 +76,7 @@ angular.module('crookedFireApp')
     }
 
     function addIncome() {
-      var newEmptyIncomes = {active:true, name:'', amount:0,frequency:1};
+      var newEmptyIncomes = {active:true, name:'', amount:'',frequency:1};
       vm.incomes.push(newEmptyIncomes);
     }
 
@@ -85,7 +85,7 @@ angular.module('crookedFireApp')
     }
 
     function addTransaction() {
-      var newEmptyTransaction = {active:true, name:'', amount:0, month:1};
+      var newEmptyTransaction = {active:true, name:'', amount:'', month:1};
       vm.nonRecurring.push(newEmptyTransaction);
     }
 
