@@ -23,9 +23,9 @@
 
   // Spec patterns are relative to the location of this config.
   specs: [
-  	  // 'e2e/*.js',
+      // 'e2e/*.js',
      //  'e2e/**/*.js',
-      'e2e/**/project.balance.spec.js'
+      'specs/**/*.js'
   ],
 
 
@@ -34,11 +34,10 @@
   // "--suite=homepage,jobsApply"  only the patterns matched by the specified suites will
   // run.
   suites: {
-    homepage: 'e2e/authentication/auth.spec.js',
-    jobsApply: [
-      'e2e/authentication/auth.spec.js',
-      'e2e/jobs/job_apply.spec.js'
-    ],
+    //homepage: 'e2e/authentication/auth.spec.js',
+    calc: [
+      'specs/entries/entries.spec.js'
+    ]
   },
 
   // Protractor can launch your tests on one or more browsers. If you are
@@ -54,13 +53,13 @@
     'browserName': 'chrome'
   },
 
-   // ---------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------
   // ----- Global test information ---------------------------------------------
   // ---------------------------------------------------------------------------
   //
   // A base URL for your application under test. Calls to protractor.get()
   // with relative paths will be prepended with this.
-  //baseUrl:  'http://devcareers.whg.co.nz/',
+  baseUrl:  'http://localhost:9000/',
 
   // A callback function called once protractor is ready and available, and
   // before the specs are executed.
@@ -73,6 +72,9 @@
   onPrepare: function() {
   browser.manage().window().setPosition(0, 0);
   browser.manage().window().maximize();
+
+  browser.get('#/');
+  login();
   },
 
 
@@ -83,16 +85,8 @@
   //   --params.login.user 'Joe'
   params: {
     login: {
-      applicant1Email: 'admin@test.com',
-      applicant1Pwd: 'admin123',
-      applicant2Email: 'applicant3@test.com',
-      applicant2Pwd: 'applicant321',
-      applicant3Email: 'applicant4@test.com',
-      applicant3Pwd: 'applicant4321',
-      manager1Email: 'stephanie@coenes.co.nz',
-      manager1Pwd: 'careers',
-      adminEmail: 'reubenpepperell@gmail.com',
-      adminPwd: 'fireworks123'
+      user1Email: 'protractor@ngmeetup.co.nz',
+      user1Pwd: 'angulare2e',
     }
 
   },
@@ -116,4 +110,16 @@
     includeStackTrace: true
   }
 
+}
+function login(){
+  element(by.id('login')).click();
+  element(by.model('vm.email')).sendKeys(browser.params.login.user1Email);
+  element(by.model('vm.password')).sendKeys(browser.params.login.user1Pwd);
+  element(by.id('submit')).click();
+  var validUrl = browser.baseUrl + '#/';
+  browser.wait(function() {
+          return browser.getCurrentUrl().then(function(url) {
+              return (url === validUrl);
+          });
+      }, 10000);
 }

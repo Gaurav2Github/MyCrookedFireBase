@@ -41,7 +41,8 @@ angular.module('crookedFireApp')
 
         function createEntry() {
             vm.entries.$add(vm.entry).then(function (ref) {
-                $location.path('entries/' + ref.key())
+                //$location.path('entries/' + ref.key())
+                $location.path('entries');
             }).catch(function (err) {
                 console.log('create operation failed: ', err);
             });

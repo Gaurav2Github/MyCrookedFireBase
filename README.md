@@ -1,11 +1,23 @@
+##Demo app for using protractor for end to end testing
+
+## To install app dependencies
+
+Run 'npm install'
+
 ## Build & development
 
 Run `grunt` for building and `grunt serve` for preview.
 
-## Testing
+## Protractor test run scripts:
 
-Running `grunt test` will run the unit tests with karma.
+npm run protractor-basic
 
-## Production
+npm run protractor-login-onprepare
 
-Run 'grunt serve:dist'
+npm run protractor-page-objects
+
+npm run protractor-reporting
+
+npm run protractor-on-firefox
+
+npm run protractor-not-ngapp

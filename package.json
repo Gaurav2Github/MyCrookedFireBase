@@ -31,10 +31,25 @@
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.0",
     "phantomjs": "^1.9.17",
+    "protractor-jasmine2-screenshot-reporter": "^0.1.7",
     "time-grunt": "^1.0.0"
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "scripts": {
+    "dev": "grunt",
+    "dev:watch": "grunt serve",
+    "production": "grunt serve:dist", 
+    "update-webdriver": "webdriver-manager update",
+    "standalone-server": "webdriver-manager start",
+    "karma": "karma start test/karma.conf.js",
+    "protractor-basic": "protractor test/e2e/howtos/basictests/protractor.conf.js",
+    "protractor-login-onprepare": "protractor test/e2e/howtos/loginonprepare/protractor.conf.js",
+    "protractor-page-objects": "protractor test/e2e/howtos/pageobjects/protractor.conf.js",
+    "protractor-reporting": "protractor test/e2e/howtos/htmlscreenshotreport/protractor.conf.js",
+    "protractor-on-firefox": "protractor test/e2e/howtos/onfirefox/protractor.conf.js",
+    "protractor-not-ngapp": "protractor test/e2e/howtos/notngApp/protractor.conf.js"
   },
   "dependencies": {
     "firebase": "^2.2.9"
