@@ -1,5 +1,8 @@
 ##Demo ngApp for using Protractor for AngularJS e2e testing
 
+### My Talk
+- [Using Protractor for e2e testing of AngularJS Apps](http://gaurav2github.github.io/protractor/docs/slides/)
+
 
 ## To install app dependencies
 
