@@ -1,4 +1,5 @@
-##Demo app for using protractor for end to end testing
+##Demo ngApp for using Protractor for AngularJS e2e testing
+
 
 ## To install app dependencies
 
